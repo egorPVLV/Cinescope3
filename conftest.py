@@ -55,3 +55,19 @@ def requester():
     session = requests.Session()
     return CustomRequester(session=session, base_url=BASE_URL)
 
+@pytest.fixture(scope="session")
+def session():
+    """
+    Фикстура для создания HTTP-сессии.
+    """
+    http_session = requests.Session()
+    yield http_session
+    http_session.close()
+
+
+pytest.fixture(scope="session")
+def api_manager(session):
+    """
+    Фикстура для создания экземпляра ApiManager.
+    """
+    return ApiManager(session)
