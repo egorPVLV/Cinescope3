@@ -5,11 +5,11 @@ class ApiManager:
     """
     Класс для управления API-классами с единой HTTP-сессией.
     """
-    def __init__(self, session):
+    def __init__(self, session, base_url=None):
         """
         Инициализация ApiManager.
         :param session: HTTP-сессия, используемая всеми API-классами.
         """
         self.session = session
         self.auth_api = AuthAPI(session)
-        self.user_api = UserAPI(session)
+        self.user_api = UserAPI(session, base_url=base_url)

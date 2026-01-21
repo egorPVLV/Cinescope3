@@ -5,8 +5,8 @@ class UserAPI(CustomRequester):
     Класс для работы с API пользователей.
     """
 
-    def __init__(self, session):
-        super().__init__(base_url=session.base_url)
+    def __init__(self, session, base_url=None):
+        super().__init__(session, base_url=base_url)
         self.session = session
 
     def get_user_info(self, user_id, expected_status=200):
